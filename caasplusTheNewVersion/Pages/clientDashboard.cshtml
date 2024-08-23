@@ -1,0 +1,119 @@
+﻿@page
+@model IndexModel
+@{
+
+}
+<head>
+    <link href='https://fonts.googleapis.com/css?family=Tajawal' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+</head>
+@* <div class="corner-shape"></div>
+ *@
+
+<style>
+    body {
+        background: linear-gradient(135deg, #f3e8ff 0%, #fff5e6 100%);
+    }
+
+    .input {
+        display: 'block' !important;
+    }
+</style>
+
+<body>
+    
+    <div class="corner-shape">
+        <a href="/" class="home-icon" title="الصفحة الرئيسية">
+            <i class="fas fa-home"></i>
+        </a>
+    </div>  
+
+     @* <header class="header">
+          <div class="logo">
+        <img src="/Images/New.png" alt="Sqyadio Logo" class="logo2" />
+        </div> 
+        <div class="nav-and-actions">
+            <nav class="nav-links">
+                <a href="#">تعرف على كفاءاتنا</a>
+                <a href="#">دراسات الحالة</a>
+                <a href="#">التوصيات</a>
+            </nav>
+            <div class="action-buttons">
+                <button class="btn btn-primary" id="StartNow">ابدأ الآن</button>
+                <button class="btn btn-outline">تسجيل الدخول</button>
+                <button class="btn btn-outline">الرئيسية</button>
+            </div>
+        </div>
+    </header> *@
+  
+    <div class="containerReg">
+        <div class="title-section">
+            <h1>طلب خدمة جديدة</h1>
+        </div>
+        <div class="form-section">
+            <form class="registration-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstName">عنوان الخدمة</label>
+                        <input type="text" id="firstName" name="firstName" placeholder="خصص عنوان للخدمة" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">وصف الخدمة</label>
+                        <input type="text" id="lastName" name="lastName" placeholder="وصف مختصر للخدمة" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                <div class="form-group">
+                    <label for="date">التاريخ المتوقع لإنجاز الخدمة</label>
+                    <input type="datetime-local" id="date" name="date" placeholder="التاريخ المتوقع إنجاز الخدمة فيه" required>
+                </div>
+                <div class="form-group">
+                    <label for="date">الموعد النهائي لإستقبال العروض</label>
+                    <input type="datetime-local" id="Subdate" name="Subdate" placeholder="" required>
+                </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="country">البلد</label>
+                        <select id="country" name="country" required>
+                            <option value="المملكة العربية السعودية">المملكة العربية السعودية</option>
+                            <!-- Add more countries as needed -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">رقم الهاتف</label>
+                        <div class="phone-input">
+                            <input type="tel" id="phone" name="phone" placeholder="رقم الهاتف" required>
+                            <select id="countryCode" name="countryCode">
+                                <option value="+966">+966</option>
+                                <!-- Add more country codes as needed -->
+                            </select>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="postalCode">الرمز البريدي</label>
+                        <input type="text" id="postalCode" name="postalCode" placeholder="الرمز البريدي" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="CR">رقم السجل التجاري</label>
+                        <input type="text" id="CR" name="CR" placeholder="رقم السجل التجاري" required>
+                    </div>
+                </div>
+                <div class="form-group">
+
+                    <label for="file">إدراج شرح مفصل عن الخدمة</label>
+                    <input type="file" id="file" name="file" placeholder="" required>
+                </div>
+
+
+                <button type="submit" class="btn-register">تأكيد الطلب</button>
+            </form>
+        </div>
+    </div>
+
+
+</body>

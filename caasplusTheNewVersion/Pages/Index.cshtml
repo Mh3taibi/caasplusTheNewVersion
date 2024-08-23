@@ -1,0 +1,481 @@
+﻿@page
+@model IndexModel
+@{
+   
+}
+<head>
+    <link href='https://fonts.googleapis.com/css?family=Tajawal' rel='stylesheet'>
+
+</head>
+@* <div class="corner-shape"></div>
+ *@
+
+<style>
+    input {
+        display: none;
+    }
+
+   
+    .insideContainer {
+        top: 50%;
+        padding-top : 20px; 
+        background-color: #f2f0fa;
+        border-radius: 200px; 
+        width: 500px; 
+        height: 100px; 
+       
+    }    
+    
+    .popup {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0,0,0,0.4);
+    }
+
+    .popup-content {
+        background-color: #fefefe;
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+        max-width: 500px;
+        border-radius: 10px;
+        text-align: right;
+        direction: rtl;
+    }
+
+    .close {
+        color: #aaa;
+        float: left;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+    .custom-popup-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        z-index: 9999; /* Ensure it's above other elements */
+    }
+
+        .custom-popup-overlay.show {
+            opacity: 1;
+        }
+
+    .custom-popup-content {
+        background-color: white;
+        padding: 20px;
+        border-radius: 5px;
+        width: 400px;
+        height: 400px;
+        overflow: auto;
+        position: relative;
+        text-align: right;
+        direction: rtl;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+   .custom-popup-content .h2 {
+       text-align : center ;   }
+
+    .custom-popup-close {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        font-size: 24px;
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+
+    .custom-popup-action {
+        background-color: #473086;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 15px;
+        height:100px;
+        width: 100%; 
+        margin-top:90px;
+    }
+
+        .custom-popup-action:hover {
+            background-color: #5e2ced;
+        }
+    .rectangle-button {
+        background-color: #473086;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+</style>
+
+<body>
+    <div class="corner-shape">
+        <a href="/" class="home-icon" title="الصفحة الرئيسية">
+            <i class="fas fa-home"></i>
+        </a>
+    </div>
+
+    <header class="header">
+      @*   <div class="logo">
+            <img src="/Images/New.png" alt="Sqyadio Logo" class="logo2" />
+        </div> *@
+        <div class="nav-and-actions">
+            <nav class="nav-links">
+                <a href="#">تعرف على كفاءاتنا</a>
+                <a href="#">دراسات الحالة</a> 
+                <a href="#">التوصيات</a>
+            </nav>
+            <div class="action-buttons">
+                <button class="btn btn-primary" id="StartNow">تسجيل الدخول</button>
+ 
+@*                 <button class="btn btn-outline">الرئيسية</button>
+ *@            </div>
+        </div>
+    </header>
+
+   <main>
+      
+        @* <div class="toggle-switch">
+            <input type="radio" id="hire" name="view" value="hire" 
+                   checked="@(ViewBag.CurrentView != "work")" 
+                   onchange="this.form.submit()">
+            <span class="slider"></span>
+            <label for="hire" class="label label-right">وظّف</label>
+            <input type="radio" id="work" name="view" value="work" 
+                   checked="@(ViewBag.CurrentView == "work")" 
+                   onchange="this.form.submit()">
+            <label for="work" class="label label-left">قدّم</label>
+        </div> *@
+        <label style="display: none; " class="toggle-switch">
+            <input type="checkbox" id="toggleSwitch">
+            <span class="slider"></span>
+           
+            
+        </label>
+
+
+        <div class="container">
+            <div class="insideContainer" >
+                <img src="~/Images/b1.png" class="btnimge2" />
+               
+            <label for="check" class="button">
+                 
+                <input type="checkbox" id="check">
+                <span class="span">
+                   @*  <img src="~/Images/c1.png" class="img"> *@
+                </span>
+            </label>
+                <img src="~/Images/p2.png" class="btnimge" />
+            </div>
+        </div>
+
+        <div class="content">
+            <h1 id="contentTitle">انضم كمزود خدمة وأعرض خدماتك للعملاء</h1>
+            <p id="contentDescription">تصفح قائمة طلبات الخدمات وأعرض حلولك التقنية</p>
+        </div>
+       @*  <h1>
+            @if (ViewBag.CurrentView == "work")
+            {
+                <text>قدّم كخبير تقني للعمل عن بعد</text>
+            }
+            else
+            {
+                <text>وظّف كفاءات تقنية عن بعد</text>
+            }
+        </h1> *@
+       @*  <p>أكثر من ٢٤٠٠٠ تقني متخصص من حوالي +٨٠ دولة</p> *@
+        <button class="btn btn-primary btn-lg" id="StartNow2">ابدأ الآن</button>
+        <div class="yellow-shape"></div>
+
+
+     @*    <button type="button" class="open_button">Create</button> *@
+      
+
+@*         for the pop up button
+ *@
+        
+
+
+    </main>
+
+    <script>
+        const toggleSwitch = document.getElementById('toggleSwitch');
+        const contentTitle = document.getElementById('contentTitle');
+        const contentDescription = document.getElementById('contentDescription');
+      
+        const body = document.body;
+
+        // ant thing with left property control the position inside the toggle ..
+       
+
+        let input = document.getElementById("check");// the check controller 
+        let BtnImg = document.querySelector(".btnimge");// provider img
+        let BtnImg2 = document.querySelector(".btnimge2");// client img
+        let span = document.querySelector(".span"); // the ball inside the toggle button 
+        let button = document.querySelector(".button"); //the container of the toggle 
+        let btnStartNow = document.getElementById('StartNow'); // btn start now in the header 
+        let btnStartNow2 = document.getElementById('StartNow2'); // btn start now in the bottom of the page
+        let insideConta = document.getElementById('insideContainer'); // btn start now in the bottom of the page
+        let close_button = document.querySelector(".close_button");
+        let close_button2 = document.querySelector(".close_button2");
+        let outer_box = document.querySelector(".outer_box");
+        let box2 = document.querySelector(".box2");
+        let outer_box2 = document.querySelector(".outer_box2");
+        let box = document.querySelector(".box");
+        let shape = document.getElementById("insideShape");
+
+        // insideConta.stylebackgroundColor = "#f2f0fa"; 
+         BtnImg.style.marginLeft = "70px";
+        // BtnImg.style.top = "60px";
+         BtnImg2.style.marginLeft = "100px"; // the postion of client image
+        // BtnImg2.style.marginTop = "70px"; // the postion of client image
+        body.style.backgroundColor = '#e9e1f6';//'#f4f1fa'; // Original light purple background
+        btnStartNow.style.backgroundColor = "#ffc628";
+        btnStartNow.style.color = "black";
+        span.style.left = "5px";
+        btnStartNow2.style.backgroundColor = "#ffc628";
+        btnStartNow2.style.color = "black";
+
+
+        document.addEventListener('DOMContentLoaded', function () {
+            console.log("DOM fully loaded");
+
+            const btnStartNow2 = document.getElementById('StartNow2');
+            const toggleSwitch = document.getElementById('check');
+
+            console.log("StartNow2 button:", btnStartNow2);
+            console.log("Toggle switch:", toggleSwitch);
+
+            function createAndShowPopup() {
+                console.log("Creating popup");
+                const isClient = toggleSwitch ? toggleSwitch.checked : false;
+                console.log("Is client mode:", isClient);
+
+                const popupHTML = `
+                    <div id="customPopup" class="custom-popup-overlay">
+                        <div class="custom-popup-content">
+                            <button class="custom-popup-close">&times;</button>
+                                    <h2 style="text-align : center ;" >${isClient ? 'انضم كعميل' : 'انضم كمزود خدمة'}</h2>
+                            <button class="custom-popup-action">${isClient ? 'اشرح لنا معضلتك أو الخدمة التي تحتاجها' : 'نسعد بإنضمام الكفاءات امثالكم لنا'}</button>
+                        </div>
+                    </div>
+                `;
+
+                //  <p>${isClient ? 'اطرح رغبتك ومعضلتك وتصفح قائمة العروض والحلول المقدمة' : 'تصفح قائمة طلبات الخدمات وأعرض حلولك التقنية'}</p>
+
+
+                // Remove existing popup if any
+                const existingPopup = document.getElementById('customPopup');
+                if (existingPopup) {
+                    existingPopup.remove();
+                }
+
+                // Create new popup
+                document.body.insertAdjacentHTML('beforeend', popupHTML);
+
+                // Show popup
+                const newPopup = document.getElementById('customPopup');
+                newPopup.style.display = 'flex';
+                setTimeout(() => newPopup.classList.add('show'), 10);
+
+                console.log("Popup created and shown");
+            }
+
+            function hidePopup() {
+                console.log("Hiding popup");
+                const popup = document.getElementById('customPopup');
+                if (popup) {
+                    popup.classList.remove('show');
+                    setTimeout(() => popup.remove(), 300);
+                }
+            }
+
+            if (btnStartNow2) {
+                btnStartNow2.addEventListener('click', function (event) {
+                    event.preventDefault(); // Prevent any default button behavior
+                    console.log("StartNow2 button clicked");
+                    createAndShowPopup();
+                });
+            } else {
+                console.error("StartNow2 button not found");
+            }
+
+            if (toggleSwitch) {
+                toggleSwitch.addEventListener('change', function () {
+                    console.log("Toggle switch changed. Checked:", this.checked);
+                    updateButtonText();
+                });
+            } else {
+                console.error("Toggle switch not found");
+            }
+
+            document.body.addEventListener('click', function (event) {
+                if (event.target.classList.contains('custom-popup-overlay') ||
+                    event.target.classList.contains('custom-popup-close')) {
+                    hidePopup();
+                }
+                if (event.target.classList.contains('custom-popup-action')) {
+                    const isClient = toggleSwitch ? toggleSwitch.checked : false;
+                    if (isClient) {
+                        console.log("Navigating to requests page");
+                        window.location.href = "requests";
+                    } else {
+                        console.log("Navigating to SignupProvider page");
+                        window.location.href = "SignupProvider";
+                    }
+                }
+            });
+
+            function updateButtonText() {
+                if (btnStartNow2 && toggleSwitch) {
+                    btnStartNow2.textContent = toggleSwitch.checked ? 'اطلب خدمة' : 'قدم خدماتك';
+                    console.log("Button text updated:", btnStartNow2.textContent);
+                }
+            }
+            function updateToggleState(isChecked) {
+                if (isChecked) {
+                    span.style.left = "60px";
+                    span.style.backgroundColor = "#ffc628";
+                    BtnImg.src = "/Images/p1.png";
+                    BtnImg2.src = "/Images/b2.png";
+                    contentTitle.textContent = 'انضم كعميل وستجد جميع الإجابات لطلباتك';
+                    contentDescription.textContent = 'اطرح رغبتك ومعضلتك وتصفح قائمة العروض والحلول المقدمة';
+                    body.style.backgroundColor = '#efce72';
+                    btnStartNow.style.backgroundColor = "#473086";
+                    btnStartNow.style.color = "white";
+                    btnStartNow2.style.backgroundColor = "#473086";
+                    btnStartNow2.style.color = "white";
+                } else {
+                    span.style.left = "5px"; // the postion of the circle after double click
+                    span.style.backgroundColor = "#473086";
+                    BtnImg.src = "/Images/p2.png";
+                    BtnImg2.src = "/Images/b1.png";
+                    contentTitle.textContent = 'انضم كمزود خدمة وأعرض خدماتك للعملاء';
+                    contentDescription.textContent = 'تصفح قائمة طلبات الخدمات وأعرض حلولك التقنية';
+                    body.style.backgroundColor = '#e9e1f6';
+                    btnStartNow.style.backgroundColor = "#ffc628";
+                    btnStartNow.style.color = "black";
+                    btnStartNow2.style.backgroundColor = "#ffc628";
+                    btnStartNow2.style.color = "black";
+                }
+            }
+            updateButtonText(); // Set initial text
+            if (toggleSwitch) {
+                toggleSwitch.addEventListener('change', function () {
+                    console.log("Toggle switch changed. Checked:", this.checked);
+                    updateToggleState(this.checked);
+                });
+            } else {
+                console.error("Toggle switch not found");
+            }
+            updateToggleState(toggleSwitch ? toggleSwitch.checked : false);
+
+        });
+
+        // button.onclick = function () {
+        //     if (input.checked) {
+        //         span.style.left = "60px";
+        //         span.style.backgroundColor = "#ffc628"; // the color of the circle after double click
+
+        //         //button.style.background = "#000";
+        //          BtnImg.src = "/Images/p1.png";
+        //         BtnImg2.src = "/Images/b2.png";// if u wanna change replace it with c1
+        //         contentTitle.textContent = 'انضم كعميل وستجد اجابات لطلباتك';
+        //         contentDescription.textContent = 'اطرح رغبتك ومعضلتك وتصفح قائمة العروض والحلول المقدمة';
+        //         body.style.backgroundColor = '#efce72'; // Light blue background
+        //         btnStartNow.style.backgroundColor = "#473086";
+        //         btnStartNow.style.color = "white";
+        //         btnStartNow2.style.backgroundColor = "#473086";
+        //         btnStartNow2.style.color = "white";
+
+        //         if (btnStartNow2) {
+        //             btnStartNow2.addEventListener('click', showPopupForClient);
+        //         } else {
+        //             console.error("StartNow2 button not found");
+        //         }
+                
+
+
+        //     } else {
+        //         span.style.left = "5px"; // the postion of the circle after double click 
+        //         span.style.backgroundColor = "#473086"; // the color of the circle after double click
+
+        //         //button.style.background = "linear-gradient(90deg,  rgb(25, 50, 255),rgb(200 150 255))";
+        //          BtnImg.src = "/Images/p2.png";
+        //         BtnImg2.src = "/Images/b1.png";// if u wanna change replace it with c1 
+        //         contentTitle.textContent = 'انضم كمزود خدمة وأعرض خدماتك للعملاء';
+        //         contentDescription.textContent = 'تصفح قائمة طلبات الخدمات وأعرض حلولك التقنية';
+        //         body.style.backgroundColor = '#e9e1f6';//'#f4f1fa'; // Original light purple background
+              
+        //         btnStartNow.style.backgroundColor = "#ffc628";
+        //         btnStartNow.style.color = "black";
+
+        //         btnStartNow2.style.backgroundColor = "#ffc628";
+        //         btnStartNow2.style.color = "black";
+
+        //         if (btnStartNow2) {
+        //             btnStartNow2.addEventListener('click', showPopupForProvider);
+        //         } else {
+        //             console.error("StartNow2 button not found");
+        //         }
+
+        //         }
+                
+
+               
+        //     }
+             
+
+
+         
+        
+        
+        // close_button.onclick = function(){
+        //     window.location.href = "requests";
+        // }
+        btnStartNow.onclick = function () {
+            window.location.href = "login";
+        }
+        //   close_button2.onclick = function(){
+        //     window.location.href = "login";
+        // }
+
+      
+
+    </script>
+
+</body>

@@ -1,0 +1,41 @@
+﻿@page
+@model caasplusTheNewVersion.Pages.loginModel
+@{
+    ViewData["Title"] = "تسجيل الدخول";
+}
+<head>
+    <link href='https://fonts.googleapis.com/css?family=Tajawal' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <div class="corner-shape">
+        <a href="/" class="home-icon" title="الصفحة الرئيسية">
+            <i class="fas fa-home"></i>
+        </a>
+    </div>
+    <div class="containerReg">
+        <div class="title-section">
+            <h1>تسجيل الدخول</h1>
+        </div>
+        <div class="form-section">
+            <form method="post" class="registration-form" style="margin-top: 100px;">
+                @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+                {
+                    <div class="text-danger">@Model.ErrorMessage</div>
+                }
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="UserName">اسم المستخدم</label>
+                        <input type="text" id="UserName" name="UserName" asp-for="UserName" class="form-control" placeholder="اسم المستخدم" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="Password">كلمة المرور</label>
+                        <input type="password" id="Password" name="Password" asp-for="Password" class="form-control" placeholder="كلمة المرور" required>
+                    </div>
+                </div>
+                <button type="submit" class="btn-register">تسجيل الدخول</button>
+            </form>
+        </div>
+    </div>
+    <div class="yellow-shape"></div>
+</body>

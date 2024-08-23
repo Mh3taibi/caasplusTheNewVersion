@@ -1,0 +1,268 @@
+﻿@page
+@model IndexModel
+@{
+
+}
+<head>
+    <link href='https://fonts.googleapis.com/css?family=Tajawal' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+</head>
+
+
+ <style>
+    body {
+        background: linear-gradient(135deg, #f3e8ff 0%, #fff5e6 100%);
+    }
+
+    .input {
+        display: 'block' !important;
+    }
+
+    .error-message {
+        color: red;
+        font-size: 0.8em;
+        margin-top: 5px;
+    }
+
+  
+</style> 
+
+<body>
+    <div class="corner-shape">
+        <a href="/" class="home-icon" title="الصفحة الرئيسية">
+            <i class="fas fa-home"></i>
+        </a>
+    </div>
+   
+    <div class="containerReg">
+        <div class="title-section">
+            <h1>طلب خدمة جديدة</h1>
+        </div>
+        <div class="form-section">
+            <form class="registration-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstName">عنوان الخدمة</label>
+                        <input type="text" id="firstName" name="firstName" placeholder="خصص عنوان للخدمة"  >
+                        @* <span class="error-message" id="firstNameError"></span> *@
+
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">وصف الخدمة</label>
+                        <input type="text" id="lastName" name="lastName" placeholder="وصف مختصر للخدمة"  >
+                        @*   <span class="error-message" id="lastNameError"></span>*@
+
+        </div>
+                </div>
+                <div class="form-row">
+                <div class="form-group">
+                    <label for="date">التاريخ المتوقع لإنجاز الخدمة</label>
+                    <input type="datetime-local" id="date" name="date" placeholder="التاريخ المتوقع إنجاز الخدمة فيه"  >
+                        @*    <span class="error-message" id="dateError"></span> *@
+
+                </div>
+                <div class="form-group">
+                    <label for="date">الموعد النهائي لإستقبال العروض</label>
+                    <input type="datetime-local" id="Subdate" name="Subdate" placeholder=""  >
+                        @*  <span class="error-message" id="SubdateError"></span> *@
+
+                </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="country">البلد</label>
+                        <select id="country" name="country"  >
+                            <option value="المملكة العربية السعودية">المملكة العربية السعودية</option>
+                            <!-- Add more countries as needed -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">رقم الهاتف</label>
+                        <div class="phone-input">
+                            <input type="tel" id="phone" name="phone" placeholder="رقم الهاتف"  >
+                            @*  <span class="error-message" id="PhoneError"></span> *@
+
+                            <select id="countryCode" name="countryCode">
+                                <option value="+966">+966</option>
+                                <!-- Add more country codes as needed -->
+                            </select>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="postalCode">الرمز البريدي</label>
+                        <input type="text" id="postalCode" name="postalCode" placeholder="الرمز البريدي"  >
+                        @*   <span class="error-message" id="postalError"></span> *@
+
+                    </div>
+                    <div class="form-group">
+                        <label for="CR">رقم السجل التجاري</label>
+                        <input type="text" id="CR" name="CR" placeholder="رقم السجل التجاري"  >
+                        @*   <span class="error-message" id="CRError"></span> *@
+
+                    </div>
+                </div>
+                <div class="form-group">
+
+                    <label for="file">إدراج شرح مفصل عن الخدمة</label>
+                    <input type="file" id="file" name="file" placeholder=""  >
+
+                </div>
+
+
+                <button type="submit" class="btn-register">تأكيد الطلب</button>
+            </form>
+        </div>
+       
+        <div class="yellow-shape"></div>
+        
+   
+
+    </div>
+    
+
+</body>
+<script>
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const btnRegister = document.querySelector('.btn-register');
+        let signupPopup = null;
+
+        function createSignupPopup() {
+            const popupHTML = `
+                <div id="signupPopup" class="Signupbox">
+                    <div class="button_box">
+                        <button class="signup_button">تسجيل</button>
+                        <button class="login_button">دخول</button>
+                        <div class="slider_button"></div>
+                    </div>
+                    <div class="form_box">
+                        <div class="form_slider">
+     <form class="signup_form">
+                        <div class="form-row">
+                            <div class="form-group">
+
+                                <div class="input_box">
+                                    <input type="text" required>
+                                    <label>الاسم الكامل</label>
+                                </div>
+                                </div>
+                                <div class="form-group">
+                                <div class="input_box">
+                                    <input type="text" required>
+                                    <label>اسم المستخدم</label>
+                                </div>
+
+                             </div>
+                             </div>
+                             <div class="form-row">
+                            <div class="form-group">
+                            <div class="input_box">
+                                <input type="email" required>
+                                <label>البريد الإلكتروني</label>
+                            </div>
+                            </div>
+                                <div class="form-group">
+                            <div class="input_box">
+                                <input type="password" required>
+                                <label>كلمة المرور</label>
+                            </div>
+                            </div>
+                            </div>
+
+                        <button type="submit">تسجيل</button>
+                        <div class="link">لديك حساب بالفعل؟ <a href="#" class="login_link">تسجيل الدخول</a></div>
+                    </form>
+                            <form class="login_form">
+                                <div class="input_field_box">
+                                    <div class="input_box">
+                                        <input type="email" required>
+                                        <label>البريد الإلكتروني</label>
+                                    </div>
+                                    <div class="input_box">
+                                        <input type="password" required>
+                                        <label>كلمة المرور</label>
+                                    </div>
+                                </div>
+                                <div class="password_link"><a href="#">نسيت كلمة المرور؟</a></div>
+                                <button type="submit">دخول</button>
+                                <div class="link">ليس لديك حساب؟ <a href="#" class="signup_link">إنشاء حساب</a></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            document.body.insertAdjacentHTML('beforeend', popupHTML);
+            signupPopup = document.getElementById('signupPopup');
+
+            // Add event listeners for signup/login toggle
+            const signupButton = signupPopup.querySelector('.signup_button');
+            const loginButton = signupPopup.querySelector('.login_button');
+            const sliderButton = signupPopup.querySelector('.slider_button');
+            const formSlider = signupPopup.querySelector('.form_slider');
+
+            loginButton.addEventListener('click', () => {
+                sliderButton.style.left = '0%';
+                formSlider.style.left = '0%';
+            });
+
+            signupButton.addEventListener('click', () => {
+                sliderButton.style.left = '50%';
+                formSlider.style.left = '-100%';
+            });
+
+            // Toggle between signup and login forms
+            signupPopup.querySelector('.login_link').addEventListener('click', (e) => {
+                e.preventDefault();
+                loginButton.click();
+            });
+
+            signupPopup.querySelector('.signup_link').addEventListener('click', (e) => {
+                e.preventDefault();
+                signupButton.click();
+            });
+        }
+
+        function showSignupPopup() {
+            if (!signupPopup) {
+                createSignupPopup();
+            }
+            signupPopup.classList.add('Signupbox_active');
+        }
+
+        function hideSignupPopup() {
+            if (signupPopup) {
+                signupPopup.classList.remove('Signupbox_active');
+            }
+        }
+
+        if (btnRegister) {
+            btnRegister.addEventListener('click', function (event) {
+                event.preventDefault();
+                showSignupPopup();
+            });
+        } else {
+            console.error("Register button not found");
+        }
+
+        // Close popup when clicking outside
+        document.addEventListener('click', function (event) {
+            if (signupPopup && !signupPopup.contains(event.target) && event.target !== btnRegister) {
+                hideSignupPopup();
+            }
+        });
+
+        // Prevent form submission (for demonstration purposes)
+        document.addEventListener('submit', function (event) {
+            event.preventDefault();
+            console.log('Form submitted');
+            hideSignupPopup();
+        });
+    });
+   
+
+</script>

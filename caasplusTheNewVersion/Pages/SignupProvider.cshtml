@@ -1,0 +1,116 @@
+﻿@page
+@model IndexModel
+@{
+   
+}
+<head>
+    <link href='https://fonts.googleapis.com/css?family=Tajawal' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+</head>
+@* <div class="corner-shape"></div>
+ *@
+
+<style>
+   
+
+    body {
+        font-family: 'Tajawal', Arial, sans-serif;
+        background: linear-gradient(135deg, #f3e8ff 0%, #fff5e6 100%);
+        margin: 0;
+        padding: 40px;
+        direction: rtl;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #333;
+    }
+    /* .input{
+        display: 'block' !important;
+    } */
+</style>
+
+<body>
+    <div class="corner-shape">
+        <a href="/" class="home-icon" title="الصفحة الرئيسية">
+            <i class="fas fa-home"></i>
+        </a>
+    </div>
+  @*   <header class="header">
+    
+        <div class="nav-and-actions">
+            <nav class="nav-links">
+                <a href="#">تعرف على كفاءاتنا</a>
+                <a href="#">دراسات الحالة</a> 
+                <a href="#">التوصيات</a>
+            </nav>
+            <div class="action-buttons">
+                <button class="btn btn-primary" id="StartNow">ابدأ الآن</button>
+                <button class="btn btn-outline">تسجيل الدخول</button>
+                <button class="btn btn-outline">الرئيسية</button>
+            </div>
+        </div>
+    </header> *@
+
+    <div class="containerReg">
+        <div class="title-section">
+            <h1>التسجيل كمزود خدمة</h1>
+        </div>
+        <div class="form-section">
+            <form class="registration-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstName">الاسم الأول</label>
+                        <input type="text" id="firstName" name="firstName" placeholder="الاسم الأول" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">الاسم الأخير</label>
+                        <input type="text" id="lastName" name="lastName" placeholder="الاسم الأخير" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email">البريد الإلكتروني</label>
+                    <input type="email" id="email" name="email" placeholder="البريد الإلكتروني" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="country">البلد</label>
+                        <select id="country" name="country" required>
+                            <option value="المملكة العربية السعودية">المملكة العربية السعودية</option>
+                            <!-- Add more countries as needed -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">رقم الهاتف</label>
+                        <div class="phone-input">
+                            <input type="tel" id="phone" name="phone" placeholder="رقم الهاتف" required>
+                            <select id="countryCode" name="countryCode">
+                                <option value="+966">+966</option>
+                                <!-- Add more country codes as needed -->
+                            </select>
+                           
+                        </div>
+                    </div>
+                </div>
+                    <div class="form-row">
+                    <div class="form-group">
+                        <label for="postalCode">الرمز البريدي</label>
+                        <input type="text" id="postalCode" name="postalCode" placeholder="الرمز البريدي" required>
+                    </div>
+                        <div class="form-group">
+                            <label for="CR">رقم السجل التجاري</label>
+                            <input type="text" id="CR" name="CR" placeholder="رقم السجل التجاري" required>
+                        </div>
+                    </div>
+                    
+                
+                <button type="submit" class="btn-register">التسجيل</button>
+            </form>
+        </div>
+        <div class="yellow-shape"></div>
+
+    </div>
+ 
+
+</body>
